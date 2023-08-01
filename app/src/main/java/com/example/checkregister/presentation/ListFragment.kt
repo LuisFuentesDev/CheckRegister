@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
 import com.example.checkregister.R
 import com.example.checkregister.databinding.FragmentListBinding
 
@@ -25,7 +26,14 @@ class ListFragment : Fragment() {
         binding = FragmentListBinding.inflate(inflater, container, false)
 
         initLista()
+        regresar()
         return binding.root
+    }
+
+    private fun regresar() {
+        binding.buttonRegresar.setOnClickListener{
+            findNavController().navigate(R.id.action_listFragment_to_addFragment)
+        }
     }
 
     private fun initLista() {
