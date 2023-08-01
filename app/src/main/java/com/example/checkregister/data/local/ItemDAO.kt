@@ -8,9 +8,9 @@ import androidx.room.Query
 @Dao
 interface ItemDAO {
     @Insert
-    suspend fun insertItem(item: Item)
+    suspend fun insertItem(itemEntity: ItemEntity)
 
     @Query("SELECT*FROM item_table order by id asc")
 
-    fun getAllItems():LiveData<List<Item>>
+    fun getAllItems():LiveData<List<ItemEntity>>
 }

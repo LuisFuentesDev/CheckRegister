@@ -1,15 +1,15 @@
 package com.example.checkregister.data
 
 import androidx.lifecycle.LiveData
-import com.example.checkregister.data.local.Item
+import com.example.checkregister.data.local.ItemEntity
 import com.example.checkregister.data.local.ItemDAO
 
 class Repository(private val itemDao: ItemDAO) {
-    suspend fun insertItem(item: Item) {
-        itemDao.insertItem(item)
+    suspend fun insertItem(itemEntity: ItemEntity) {
+        itemDao.insertItem(itemEntity)
     }
 
-    fun getItem(): LiveData<List<Item>>{
+    fun getItem(): LiveData<List<ItemEntity>>{
         return itemDao.getAllItems()
     }
 }

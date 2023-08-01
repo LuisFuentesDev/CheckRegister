@@ -28,7 +28,7 @@ class AddFragment : Fragment() {
     }
 
     private fun initListener() {
-        binding.buttonGuardar.setOnClickListener() {
+        binding.buttonGuardar.setOnClickListener{
             val nombre = binding.editTextNombre.text.toString()
             val cantidad = binding.editTextCantidad.text.toString().toInt()
             val precio = binding.editTextPrecio.text.toString().toInt()
