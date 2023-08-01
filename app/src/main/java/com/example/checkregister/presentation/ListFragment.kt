@@ -5,11 +5,14 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.activityViewModels
 import com.example.checkregister.R
+import com.example.checkregister.databinding.FragmentListBinding
 
 class ListFragment : Fragment() {
-
-
+    lateinit var binding: FragmentListBinding
+    private val itemsViewModel: ItemsViewModel by activityViewModels()
+    val adapter = ItemAdapter()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -19,8 +22,18 @@ class ListFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_list, container, false)
+        binding = FragmentListBinding.inflate(inflater, container, false)
+
+        initLista()
+        return binding.root
+    }
+
+    private fun initLista() {
+        itemsViewModel.getAllItems().observe(viewLifecycleOwner) {
+        adapter.setData(it)
+        }
+
+        binding.recyclerView.adapter = adapter
     }
 
 }

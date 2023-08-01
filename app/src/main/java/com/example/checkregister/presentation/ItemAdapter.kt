@@ -16,6 +16,12 @@ class ItemAdapter : RecyclerView.Adapter<ItemAdapter.ItemViewHolder>() {
         return ItemViewHolder(binding)
     }
 
+    fun setData(listaItem: List<ItemEntity>) {
+        this.listItemEntity.clear()
+        this.listItemEntity.addAll(listaItem)
+        notifyDataSetChanged()
+    }
+
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
         val item = listItemEntity[position]
         holder.render(item)
